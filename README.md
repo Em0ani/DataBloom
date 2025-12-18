@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logoDBloom.png" alt="DataBloom Logo" width="300">
+  <img src="assets/logo2.png" alt="DataBloom Logo" width="300">
 </p>
 
 <h1 align="center">DataBloom</h1>
