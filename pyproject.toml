@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "databloom"
+version = "0.2.0"
+description = "Bibliothèque de visualisation ,Soft visuals. Strong stories."
+authors = [{name = "Emani BABE", email = "emani0babe@gmail.com"}]
+dependencies = [
+    "matplotlib",
+    "numpy",
+    "seaborn",
+    "altair",
+    "pandas" 
+]
