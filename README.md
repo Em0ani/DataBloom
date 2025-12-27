@@ -49,27 +49,34 @@ cd DataBloom
 
 # Install dependencies
 pip install pandas geopandas bokeh
+🗺️ Interactive Choropleth Maps
 
-🗺 Interactive Choropleth Maps
-DataBloom now simplifies the creation of interactive maps. Instead of writing complex JavaScript callbacks manually, you can generate a professional dashboard for election results or demographic data with a single function.
+DataBloom now simplifies the creation of interactive maps. Instead of writing complex JavaScript callbacks manually, you can generate a professional dashboard for election results or demographic data with a single function call.
+
 Example: Mauritania Election Results
+
 This example shows how to visualize candidate performance across different regions (Moughataas) using the logic from our latest interactive module.
+
 code
 Python
+download
+content_copy
+expand_less
 import databloom as db
 import geopandas as gpd
 import pandas as pd
 from bokeh.io import show, output_notebook
 
-# 1. Load your data
+# 1. Load your geographic and electoral data
 gdf = gpd.read_file("mrt_admbnda_adm2.shp")
 df = pd.read_csv("results_elections_2024.csv")
 
-# 2. Pivot the data so candidates are columns
+# 2. Pivot the data so candidates appear as selectable columns
 df_pivot = df.pivot(index='moughataa', columns='candidate', values='nb_votes').fillna(0)
 candidates = df_pivot.columns.tolist()
 
-# 3. Generate the interactive layout
+# 3. Generate the interactive layout with DataBloom
+# DataBloom handles the GeoJSON conversion and JavaScript logic internally
 layout = db.plot_interactive_choropleth(
     gdf=gdf,
     df=df_pivot,
@@ -81,12 +88,19 @@ layout = db.plot_interactive_choropleth(
 # 4. Show the bloom!
 output_notebook()
 show(layout)
-🛠 Project Structure
+🛠️ Project Structure
+
 databloom/geoviz.py: Contains the logic for Bokeh maps and JavaScript injection.
+
 assets/: Logos and visual documentation.
+
 examples/: Notebooks showing DataBloom in action.
+
 🤝 Contributing
+
 Feel free to fork this repository and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
+
 <p align="center">
 Made with ☕ by <a href="https://github.com/Em0ani">Emani BABE</a>
 </p>
+```
