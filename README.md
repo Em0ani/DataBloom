@@ -84,7 +84,7 @@ layout = db.plot_interactive_choropleth(
     value_columns=candidates,
     title_prefix="Votes per Region -"
 )
-
+```
 # 4. Show the bloom!
 output_notebook()
 show(layout)
@@ -103,4 +103,4 @@ Feel free to fork this repository and submit pull requests. For major changes, p
 <p align="center">
 Made with ☕ by <a href="https://github.com/Em0ani">Emani BABE</a>
 </p>
-```
+
