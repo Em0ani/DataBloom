@@ -84,20 +84,13 @@ layout = db.plot_interactive_choropleth(
     value_columns=candidates,
     title_prefix="Votes per Region -"
 )
-```
 # 4. Show the bloom!
 output_notebook()
 show(layout)
-🛠️ Project Structure
 
-databloom/geoviz.py: Contains the logic for Bokeh maps and JavaScript injection.
+```
 
-assets/: Logos and visual documentation.
-
-examples/: Notebooks showing DataBloom in action.
-
-🤝 Contributing
-
+## 🤝 Contributing
 Feel free to fork this repository and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
 
 <p align="center">
