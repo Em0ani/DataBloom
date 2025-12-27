@@ -19,12 +19,13 @@
 
 ## 🌸 About DataBloom
 
-**DataBloom** is a [Data Processing / Visualization / Analysis] tool designed to help developers and data scientists cultivate meaningful patterns from chaotic datasets. Much like a bloom, this project focuses on growth, structure, and the organic beauty of well-organized information.
+**DataBloom** is a data processing and visualization library designed to help developers and data scientists cultivate meaningful patterns from chaotic datasets. Much like a bloom, this project focuses on growth, structure, and the organic beauty of well-organized information.
 
 ## ✨ Key Features
 
 - 🚀 **Fast Processing:** Optimized pipelines for high-velocity data.
-- 🎨 **Elegant Visuals:** Generate intuitive charts and graphs that represent growth.
+- 🗺️ **Interactive Geospatial Visuals:** Generate dynamic choropleth maps with automatic JavaScript callbacks and Bokeh integration.
+- 🎨 **Elegant Design:** Create intuitive charts and graphs that represent growth.
 - 🛠️ **Modular Design:** Easily plug in your own data sources and transformation logic.
 - 📈 **Scalable:** Built to grow alongside your data needs.
 
@@ -32,8 +33,10 @@
 
 ### Prerequisites
 
-- Python 3.8+ (or your specific language requirements)
-- [List any other dependencies here]
+- **Python 3.8+**
+- **Geopandas** (for spatial data)
+- **Pandas** (for data manipulation)
+- **Bokeh** (for interactive rendering)
 
 ### Installation
 
@@ -45,4 +48,45 @@ git clone https://github.com/Em0ani/DataBloom.git
 cd DataBloom
 
 # Install dependencies
-pip install -r requirements.txt
+pip install pandas geopandas bokeh
+
+🗺 Interactive Choropleth Maps
+DataBloom now simplifies the creation of interactive maps. Instead of writing complex JavaScript callbacks manually, you can generate a professional dashboard for election results or demographic data with a single function.
+Example: Mauritania Election Results
+This example shows how to visualize candidate performance across different regions (Moughataas) using the logic from our latest interactive module.
+code
+Python
+import databloom as db
+import geopandas as gpd
+import pandas as pd
+from bokeh.io import show, output_notebook
+
+# 1. Load your data
+gdf = gpd.read_file("mrt_admbnda_adm2.shp")
+df = pd.read_csv("results_elections_2024.csv")
+
+# 2. Pivot the data so candidates are columns
+df_pivot = df.pivot(index='moughataa', columns='candidate', values='nb_votes').fillna(0)
+candidates = df_pivot.columns.tolist()
+
+# 3. Generate the interactive layout
+layout = db.plot_interactive_choropleth(
+    gdf=gdf,
+    df=df_pivot,
+    join_on='moughataa',
+    value_columns=candidates,
+    title_prefix="Votes per Region -"
+)
+
+# 4. Show the bloom!
+output_notebook()
+show(layout)
+🛠 Project Structure
+databloom/geoviz.py: Contains the logic for Bokeh maps and JavaScript injection.
+assets/: Logos and visual documentation.
+examples/: Notebooks showing DataBloom in action.
+🤝 Contributing
+Feel free to fork this repository and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
+<p align="center">
+Made with ☕ by <a href="https://github.com/Em0ani">Emani BABE</a>
+</p>
